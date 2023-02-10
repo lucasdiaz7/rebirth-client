@@ -32,7 +32,7 @@ export const useFavoritesPetsDetails = (filters) => {
 
 export const useUpdateFavs = (mail, id) => {
   return useMutation(async () => {
-    return await axios.put(`https://app-rebirth.netlify.app/user/deleteFavs/${mail}`, id);
+    return await axios.put(`https://rebirth-app.up.railway.app/user/deleteFavs/${mail}`, id);
   })
 }
 
@@ -60,7 +60,7 @@ async function fetchingData({
     const locationFilter = !location.length ? "" : passArrayByUrl(location);
 
     const dataTest = await axios.get(
-      `https://app-rebirth.netlify.app/?page=${page}&name=${nameFilter}&type=${typeFilter}&age=${ageFilter}&gender=${genderFilter}&size=${sizeFilter}&location=${locationFilter}`
+      `https://rebirth-app.up.railway.app/?page=${page}&name=${nameFilter}&type=${typeFilter}&age=${ageFilter}&gender=${genderFilter}&size=${sizeFilter}&location=${locationFilter}`
     );
 
     return dataTest;
@@ -84,7 +84,7 @@ function passArrayByUrl(filterArray) {
 async function fetchingFavorites({ mail }) {
   try {
     const dataFavorites = await axios.get(
-      `https://app-rebirth.netlify.app/user/Favs/${mail}`
+      `https://rebirth-app.up.railway.app/user/Favs/${mail}`
     );
     return dataFavorites;
   } catch (error) {
@@ -94,7 +94,7 @@ async function fetchingFavorites({ mail }) {
 
 async function favoritesPetsDetails({ id }) {
   let dataFavorites =
-    id && id.map((id) => axios.get(`https://app-rebirth.netlify.app/pets/${id}`));
+    id && id.map((id) => axios.get(`https://rebirth-app.up.railway.app/pets/${id}`));
   const arrayDetails = await Promise.all(dataFavorites);
   return arrayDetails;
 }

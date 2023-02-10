@@ -45,7 +45,7 @@ const { REACT_APP_SERVER }  = process.env;
 export function getTestimonials(){
   return async function(dispatch){
     try {
-      const data = await axios(`https://app-rebirth.netlify.app/successstories`)
+      const data = await axios(`https://rebirth-app.up.railway.app/successstories`)
       return dispatch({
         type:'GET_TESTIMONIALS',
         payload: data
@@ -86,7 +86,7 @@ export function CreaUpdateNotification(mail) {
   return async function (dispatch) {
     try {
       let userMail={userMail:mail}
-      const { data } = await axios.post(`https://app-rebirth.netlify.app/notification`,userMail)
+      const { data } = await axios.post(`https://rebirth-app.up.railway.app/notification`,userMail)
       return dispatch({
         type: CREA_UPDATE_NOTIFICATION,
       });
@@ -97,7 +97,7 @@ export function CreaUpdateNotification(mail) {
 export function VistoNotification(email) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.patch(`https://app-rebirth.netlify.app/notification/${email}`)
+      const { data } = await axios.patch(`https://rebirth-app.up.railway.app/notification/${email}`)
 
       return dispatch({
         type: VISTO_NOTIFICATION,
@@ -110,7 +110,7 @@ export function VistoNotification(email) {
 export function GetNotification(email) {
   return async function (dispatch) {
     try {
-      const { data } = await axios(`https://app-rebirth.netlify.app/notification/${email}`)
+      const { data } = await axios(`https://rebirth-app.up.railway.app/notification/${email}`)
 
       return dispatch({
         type: NOTIFICATION,
@@ -123,7 +123,7 @@ export function GetNotification(email) {
 export function pruebasDeFiltrado(name) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`https://app-rebirth.netlify.app/by_name?name=${name}`)
+      const { data } = await axios.get(`https://rebirth-app.up.railway.app/by_name?name=${name}`)
 
       return dispatch({
         type: "PRUEBA",
@@ -136,8 +136,8 @@ export function pruebasDeFiltrado(name) {
 export function switchHomeView(type){
   return async function(dispatch){
     const { data } = !type ?
-        await axios.get(`https://app-rebirth.netlify.app/by_type`) :
-        await axios.get(`https://app-rebirth.netlify.app/by_type?type=${type}`)
+        await axios.get(`https://rebirth-app.up.railway.app/by_type`) :
+        await axios.get(`https://rebirth-app.up.railway.app/by_type?type=${type}`)
     const pets = data.data
     try {
       return dispatch({
@@ -166,7 +166,7 @@ export function paginateData(json) {
 export function loginUser(credentials) {
   return async function (dispatch) {
     try {
-      const json = await axios.post(`https://app-rebirth.netlify.app/login`, credentials);
+      const json = await axios.post(`https://rebirth-app.up.railway.app/login`, credentials);
       const dataUser = json.data;
       if (json.status === 201) {
         await swal(
@@ -192,7 +192,7 @@ export function loginUser(credentials) {
 export function getMessage(adoptionId) {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/message?chat=${adoptionId}`);
+      const json = await axios(`https://rebirth-app.up.railway.app/message?chat=${adoptionId}`);
       return dispatch({
         type: GET_MESSAGE,
         payload: json.data,
@@ -208,7 +208,7 @@ export function getMessage(adoptionId) {
 export function getChat(user) {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/message/chats?user=${user}`);
+      const json = await axios(`https://rebirth-app.up.railway.app/message/chats?user=${user}`);
       return dispatch({
         type: GET_CHAT,
         payload: json.data,
@@ -221,7 +221,7 @@ export function getChat(user) {
 
 export async function successAdoption(id) {
      try {
-      await axios.patch(`https://app-rebirth.netlify.app/adoption/success/${id}`);
+      await axios.patch(`https://rebirth-app.up.railway.app/adoption/success/${id}`);
      
     } catch (error) {
       return error;
@@ -232,7 +232,7 @@ export async function successAdoption(id) {
 export function putVisto(mail, adoptionId) {
   return async function (dispatch) {
     try {
-        await axios.put(`https://app-rebirth.netlify.app/message/visto`, {
+        await axios.put(`https://rebirth-app.up.railway.app/message/visto`, {
         mail: mail,
         adoptionId: adoptionId,
       });
@@ -243,7 +243,7 @@ export function putVisto(mail, adoptionId) {
 export function postMessage(payload) {
   return async function (dispatch) {
     try {
-      const json = await axios.post(`https://app-rebirth.netlify.app/message`, payload);
+      const json = await axios.post(`https://rebirth-app.up.railway.app/message`, payload);
       return dispatch({
         type: POST_MESSAGE,
         payload: json.data,
@@ -275,7 +275,7 @@ export function logoutUser() {
 export function getOwnerAdoption(id) {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/adoption/owner`);
+      const json = await axios(`https://rebirth-app.up.railway.app/adoption/owner`);
       return dispatch({
         type: GET_OWNER_ADOPTION,
         payload: json.data,
@@ -290,7 +290,7 @@ export function getOwnerAdoption(id) {
 export function getAdopterAdoption(id) {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/user`);
+      const json = await axios(`https://rebirth-app.up.railway.app/user`);
       return dispatch({
         type: GET_USER_ADOPTION,
         payload: json.data,
@@ -305,7 +305,7 @@ export function getAdopterAdoption(id) {
 export function getUsers() {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/user`);
+      const json = await axios(`https://rebirth-app.up.railway.app/user`);
       return dispatch({
         type: "GET_USER",
         payload: json.data,
@@ -320,7 +320,7 @@ export function getUsers() {
 export function getUserName(userName) {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/user?userName=${userName}`);
+      const json = await axios(`https://rebirth-app.up.railway.app/user?userName=${userName}`);
       return dispatch({
         type: GET_USERNAME,
         payload: json.data,
@@ -336,7 +336,7 @@ export function updateUser(email, payload) {
   return async function (dispatch) {
     try {
 
-      const json = await axios.put(`https://app-rebirth.netlify.app/user/${email}`, payload);
+      const json = await axios.put(`https://rebirth-app.up.railway.app/user/${email}`, payload);
       localStorage.setItem('user',JSON.stringify(json.data))
 
       if (json.status === 200) swal("OK", "User info updated", "success");
@@ -354,7 +354,7 @@ export function updateUser(email, payload) {
 export function deleteUser(mail) {
   return async function (dispatch) {
     try {
-      const json = await axios.delete(`https://app-rebirth.netlify.app/user/${mail}`);
+      const json = await axios.delete(`https://rebirth-app.up.railway.app/user/${mail}`);
       return dispatch({
         type: DELETE_USER,
         payload: json.data,
@@ -368,7 +368,7 @@ export function deleteUser(mail) {
 export function postMercadoPago(donacion) {
   return async function (dispatch) {
     try {
-      let data = await axios.post(`https://app-rebirth.netlify.app/donations`, donacion);
+      let data = await axios.post(`https://rebirth-app.up.railway.app/donations`, donacion);
       return dispatch({ type: "MERCADO_PAGO", data });
     } catch (error) {
       console.log("error", error);
@@ -379,7 +379,7 @@ export function postMercadoPago(donacion) {
 export function getUserId(id) {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/user/${id}`);
+      const json = await axios(`https://rebirth-app.up.railway.app/user/${id}`);
       return dispatch({
         type: "GET_USER_ID",
         payload: json.data,
@@ -393,7 +393,7 @@ export function getUserId(id) {
 export function postUser(payload) {
   return async function (dispatch) {
     try {
-      const { status } = await axios.post(`https://app-rebirth.netlify.app/user`, payload);
+      const { status } = await axios.post(`https://rebirth-app.up.railway.app/user`, payload);
       if (status === 201) {
         swal("WooHooo!", "User created successfully", "success").then(() =>
           window.history.back()
@@ -411,7 +411,7 @@ export function postUser(payload) {
 export function deleteAdoption(id) {
   return async function dispatch() {
     try {
-      await axios.patch(`https://app-rebirth.netlify.app/adoption/${id}`);
+      await axios.patch(`https://rebirth-app.up.railway.app/adoption/${id}`);
       return dispatch({
         type: "DELETE_ADOPTION",
       });
@@ -424,7 +424,7 @@ export function deleteAdoption(id) {
 export function getPets() {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/pets`);
+      const json = await axios(`https://rebirth-app.up.railway.app/pets`);
       return dispatch({
         type: "GET_PETS",
         payload: json.data,
@@ -438,7 +438,7 @@ export function getPets() {
 export function deletePost(id) {
   return async function (dispatch) {
     try {
-      const json = await axios.put(`https://app-rebirth.netlify.app/pets/delete/${id}`);
+      const json = await axios.put(`https://rebirth-app.up.railway.app/pets/delete/${id}`);
 
       return dispatch({
         type: DELETE_POST,
@@ -460,7 +460,7 @@ export function getPetFilters(type) {
   type = type || "";
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/pets?type=${type}`);
+      const json = await axios(`https://rebirth-app.up.railway.app/pets?type=${type}`);
       return dispatch({
         type: "GET_PETS",
         payload: json.data,
@@ -476,7 +476,7 @@ export function getPetNames(searchName) {
   return async function (dispatch) {
     try {
       
-      const { data } = await axios.get(`https://app-rebirth.netlify.app/?name=${searchName}`)
+      const { data } = await axios.get(`https://rebirth-app.up.railway.app/?name=${searchName}`)
       
 
       return dispatch({
@@ -492,7 +492,7 @@ export function getPetNames(searchName) {
 export function postPet(payload) {
   return async function (dispatch) {
     try {
-      await axios.post(`https://app-rebirth.netlify.app/pets`, payload);
+      await axios.post(`https://rebirth-app.up.railway.app/pets`, payload);
     } catch (error) {
       return error;
     }
@@ -502,7 +502,7 @@ export function postPet(payload) {
 export function getDetails(id) {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/pets/${id}`);
+      const json = await axios(`https://rebirth-app.up.railway.app/pets/${id}`);
       return dispatch({
         type: "GET_DETAILS",
         payload: json.data,
@@ -517,7 +517,7 @@ export function getDetails(id) {
 export function deletePet(id) {
   return async function (dispatch) {
     try {
-      const json = await axios.delete(`https://app-rebirth.netlify.app/pets/${id}`);
+      const json = await axios.delete(`https://rebirth-app.up.railway.app/pets/${id}`);
       console.log('json', json)
 
       return dispatch({
@@ -534,8 +534,8 @@ export function getLocation(type) {
   return async function (dispatch) {
     try {
       const { data } =  !type ?
-                        await axios(`https://app-rebirth.netlify.app/locations`) :
-                        await axios(`https://app-rebirth.netlify.app/locations?type=${type}`);
+                        await axios(`https://rebirth-app.up.railway.app/locations`) :
+                        await axios(`https://rebirth-app.up.railway.app/locations?type=${type}`);
 
       return dispatch({
         type: "GET_LOCATION",
@@ -618,7 +618,7 @@ export function addFavs(mail, id) {
   return async function (dispatch) {
     try {
       let favs = { favorites: [id] };
-      const json = await axios.put(`https://app-rebirth.netlify.app/user/addFavs/${mail}`, favs);
+      const json = await axios.put(`https://rebirth-app.up.railway.app/user/addFavs/${mail}`, favs);
       return dispatch({
         type: FAVORITES,
         payload: json.data,
@@ -633,7 +633,7 @@ export function deleteFavs(mail, id) {
   return async function (dispatch) {
     try {
       let favs = { id: id };
-      const json = await axios.put(`https://app-rebirth.netlify.app/user/deleteFavs/${mail}`, favs);
+      const json = await axios.put(`https://rebirth-app.up.railway.app/user/deleteFavs/${mail}`, favs);
 
       return dispatch({
         type: DELETE_FAVORITES,
@@ -656,7 +656,7 @@ export function saveId(id) {
 export function getFavs(mail) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`https://app-rebirth.netlify.app/user/Favs/${mail}`);
+      const json = await axios.get(`https://rebirth-app.up.railway.app/user/Favs/${mail}`);
       return dispatch({
         type: GET_FAVORITES,
         payload: json.data,
@@ -670,7 +670,7 @@ export function getFavs(mail) {
 export function getAllPets() {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/pets`);
+      const json = await axios(`https://rebirth-app.up.railway.app/pets`);
       return dispatch({
         type: GET_ALL_PETS,
         payload: json.data,
@@ -684,7 +684,7 @@ export function getAllPets() {
 export function getUsersBanned() {
   return async function (dispatch) {
     try {
-      const json = await axios(`https://app-rebirth.netlify.app/user/banned`);
+      const json = await axios(`https://rebirth-app.up.railway.app/user/banned`);
       return dispatch({
         type: USERS_BANNED,
         payload: json.data,
@@ -698,7 +698,7 @@ export function getUsersBanned() {
 export function UserRestore(mail) {
   return async function (dispatch) {
     try {
-      const json = await axios.patch(`https://app-rebirth.netlify.app/user/restore/${mail}`);
+      const json = await axios.patch(`https://rebirth-app.up.railway.app/user/restore/${mail}`);
       return dispatch({
         type: USER_RESTORE,
         payload: json.data,
@@ -712,7 +712,7 @@ export function UserRestore(mail) {
 export function makeAdmin(mail) {
   return async function (dispatch) {
     try {
-      const json = await axios.put(`https://app-rebirth.netlify.app/user/adm/${mail}`);
+      const json = await axios.put(`https://rebirth-app.up.railway.app/user/adm/${mail}`);
         return dispatch({
         type: MAKE_ADMIN,
         payload: json.data,
@@ -726,7 +726,7 @@ export function makeAdmin(mail) {
 export function postSupportForm(payload) {
   return async (dispatch) => {
     try {
-      const json = await axios.post(`https://app-rebirth.netlify.app/nodeMailer`, payload);
+      const json = await axios.post(`https://rebirth-app.up.railway.app/nodeMailer`, payload);
       if (json.status === 200) swal("OK", "Mail sent successfully", "success");
     } catch (error) {
       console.log(`Error enviando correo ${error}`);
@@ -738,7 +738,7 @@ export function postSupportForm(payload) {
 export function postAdoption(payload) {
   return async (dispatch) => {
     try {
-      const json = await axios.post(`https://app-rebirth.netlify.app/adoption`, payload);
+      const json = await axios.post(`https://rebirth-app.up.railway.app/adoption`, payload);
       if (json.status === 201)
         await swal("OK", "Adoption request created", "success");
     } catch (error) {
@@ -751,7 +751,7 @@ export function postAdoption(payload) {
 export function adoptinHistoryAdmin() {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`https://app-rebirth.netlify.app/pets/inactivo`);
+      const json = await axios.get(`https://rebirth-app.up.railway.app/pets/inactivo`);
       return dispatch({
         type: ADOTION_HISTORY_ADMIN,
         payload: json.data,
@@ -765,7 +765,7 @@ export function adoptinHistoryAdmin() {
 export function updatePetsViews(id) {
   return async () => {
     try {
-      await axios.patch(`https://app-rebirth.netlify.app/pets/${id}`);
+      await axios.patch(`https://rebirth-app.up.railway.app/pets/${id}`);
     } catch (error) {
       return error;
     }
@@ -777,7 +777,7 @@ export function successStory(payload) {
   return async (dispatch) => {
     try {
 
-      const json = await axios.post(`https://app-rebirth.netlify.app/successstories`, payload);
+      const json = await axios.post(`https://rebirth-app.up.railway.app/successstories`, payload);
 
       if (json.status === 201) await swal("Thank You", "", "success");
     } catch (error) {
@@ -790,7 +790,7 @@ export function successStory(payload) {
 export function getSuccessStory() {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`https://app-rebirth.netlify.app/successStories`);
+      const json = await axios.get(`https://rebirth-app.up.railway.app/successStories`);
       return dispatch({
         type: SUCCESS_STORY,
         payload: json.data,

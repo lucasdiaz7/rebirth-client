@@ -2,7 +2,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
 
-const { REACT_APP_SERVER } = process.env;
+// const { REACT_APP_SERVER } = process.env;
 
 export const useFetchPets = (filters) => {
   return useQuery(["pets", filters], async () => await fetchingData(filters), {
@@ -32,7 +32,7 @@ export const useFavoritesPetsDetails = (filters) => {
 
 export const useUpdateFavs = (mail, id) => {
   return useMutation(async () => {
-    return await axios.put(`${REACT_APP_SERVER}/user/deleteFavs/${mail}`, id);
+    return await axios.put(`https://app-rebirth.netlify.app/user/deleteFavs/${mail}`, id);
   })
 }
 
@@ -60,7 +60,7 @@ async function fetchingData({
     const locationFilter = !location.length ? "" : passArrayByUrl(location);
 
     const dataTest = await axios.get(
-      `${REACT_APP_SERVER}/?page=${page}&name=${nameFilter}&type=${typeFilter}&age=${ageFilter}&gender=${genderFilter}&size=${sizeFilter}&location=${locationFilter}`
+      `https://app-rebirth.netlify.app/?page=${page}&name=${nameFilter}&type=${typeFilter}&age=${ageFilter}&gender=${genderFilter}&size=${sizeFilter}&location=${locationFilter}`
     );
 
     return dataTest;
@@ -84,7 +84,7 @@ function passArrayByUrl(filterArray) {
 async function fetchingFavorites({ mail }) {
   try {
     const dataFavorites = await axios.get(
-      `${REACT_APP_SERVER}/user/Favs/${mail}`
+      `https://app-rebirth.netlify.app/user/Favs/${mail}`
     );
     return dataFavorites;
   } catch (error) {
@@ -94,7 +94,7 @@ async function fetchingFavorites({ mail }) {
 
 async function favoritesPetsDetails({ id }) {
   let dataFavorites =
-    id && id.map((id) => axios.get(`${REACT_APP_SERVER}/pets/${id}`));
+    id && id.map((id) => axios.get(`https://app-rebirth.netlify.app/pets/${id}`));
   const arrayDetails = await Promise.all(dataFavorites);
   return arrayDetails;
 }

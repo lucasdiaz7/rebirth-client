@@ -1,0 +1,17 @@
+.chat-title {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 16pt;
+}
+
+.msg-container {
+    max-width: 800px;
+    min-width: 400px;
+    background-color: var(--background);
+    border: 0px solid var(--greylight);
+    border-radius: 0px;
+    border-left: 1px dashed var(--greylight);
+    border-right: 1px dashed var(--greylight);
+    padding: 0px;
+    margin: auto;
+}

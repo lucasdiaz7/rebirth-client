@@ -1,0 +1,55 @@
+.filtBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin: 10px 0 20px 0px;
+}
+
+.cajaDeTexto {
+  width: 15rem;
+}
+
+.btn-pink {
+  background-color: var(--pink) !important;
+  border: 1px solid var(--pink) !important;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.btn-pink:hover {
+  background-color: var(--greylight) !important;
+  border: 1px solid var(--pink) !important;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.dropdown-toggle {
+  margin-right: 20px;
+  width: 10rem !important;
+}
+
+.input-group {
+  margin-right: 20px;
+}
+
+.break {
+  display: none;
+  flex-basis: 100%;
+  height: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .filtBar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .break {
+    display: block;
+    flex-basis: 100%;
+    height: 0;
+  }
+}
